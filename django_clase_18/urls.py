@@ -14,19 +14,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-# from proyecto_django.views import mi_vista, mostrar_fecha
+from django.urls import path,include
+# from django_clase_18.views import mi_vista, mostrar_fecha
 # otra forma de pedir eso:
-from django_clase_18 import views
+# from inicio import views
 
-
+# patrones de URL
 urlpatterns = [
     # path('',mi_vista),
-    path ('', views.mi_vista),
+    # path ('', views.mi_vista),
     # Pero al hacer eso tambien tenemos que modificar los path
     # path('mostrar-fecha/', mostrar_fecha),
-    path('mostrar-fecha/', views.mostrar_fecha),
-    path('saludar/<str:nobre>/<str:apellido>', views.saludar),
-    path('mi-primer-template/', views.mi_primer_template),
+    
+    # paty('nombre de como llamamos a la funcion en la pagina', views.'nombre de la funcion')
+    # path('mostrar-fecha/', views.mostrar_fecha),
+    # path('saludar/<str:nobre>/<str:apellido>', views.saludar),
+    # path('mi-primer-template/', views.mi_primer_template),
+    # path('prueba-template/', views.prueba_template),
+    
+    
+    # path("", include('inicio.urls')), # este path te redirige a las url de inicio.
+    path('inicio/', include('inicio.urls')), # Basicamente condicionamos a la pagina para que cuando querramos ir a inicio, estemos obligados a colocarlo arriba.
+    # http://127.0.0.1:8000/inicio/
+    
     path('admin/', admin.site.urls),
 ]
